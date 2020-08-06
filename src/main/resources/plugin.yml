@@ -1,0 +1,7 @@
+name: ChunkyArmorStands
+version: 0.0.1
+main: xyz.rusin.chunkyarmorstands.ChunkyArmorStands
+api-version: 1.16
+author: loganthemanster
+depend:
+  - KeepChunks
