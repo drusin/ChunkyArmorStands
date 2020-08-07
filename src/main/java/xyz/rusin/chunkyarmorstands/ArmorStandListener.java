@@ -53,15 +53,18 @@ public class ArmorStandListener implements Listener {
 
         for (var stand : stands) {
             if (StandChecker.SINGLETON.check(stand)) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-                        String.format("keepchunks keepchunk coords %d %d %s", chunk.getX(), chunk.getZ(), chunk.getWorld().getName()));
+                // It's enough if one armor stand matches in a chunk
+                KeepChunks.keepChunk(chunk);
                 return;
             }
         }
-        Bukkit.dispatchCommand(Bukkit.getConsoleSender(),
-                        String.format("keepchunks releasechunk coords %d %d %s", chunk.getX(), chunk.getZ(), chunk.getWorld().getName()));
+        // If nothing matches we might need to release the chunk
+        KeepChunks.releaseChunk(chunk);
     }
 
+    /**
+     * We have to wait a few ticks to check the armor stands, else we will see the state before player interaction
+     */
     private static void delayed(Runnable toRun) {
         Bukkit.getScheduler().scheduleSyncDelayedTask(
                 JavaPlugin.getPlugin(ChunkyArmorStands.class),

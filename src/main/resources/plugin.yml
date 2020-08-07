@@ -5,3 +5,14 @@ api-version: 1.16
 author: loganthemanster
 depend:
   - KeepChunks
+commands:
+  chunkyarmorstands:
+    description: Main command
+    aliases: 
+      - cas
+    permission: chunkyarmorstands.reloadconfig
+    permission-message: You do not have chunkyarmorstands.reloadconfig
+    usage: "possible commands: /cas reloadconfig"
+permissions:
+  chunkyarmorstands.reloadconfig:
+    description: Allows to reload the cofig file

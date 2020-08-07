@@ -14,7 +14,7 @@ public enum StandChecker {
     private final Map<EquipmentSlot, Material> mapping = new HashMap<>();
 
     public void loadConfig() {
-        var config = JavaPlugin.getPlugin(ChunkyArmorStands.class).configuration;
+        var config = JavaPlugin.getPlugin(ChunkyArmorStands.class).reloadAndGetConfiguration();
         mapping.clear();
         for (String key: config.getKeys(false)) {
             mapping.put(EquipmentSlot.valueOf(key), Material.valueOf(config.getString(key)));
